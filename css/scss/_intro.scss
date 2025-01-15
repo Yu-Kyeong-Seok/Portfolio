@@ -1,0 +1,262 @@
+$border-15trans: 15px solid transparent;
+$media-border-10trans: 10px solid transparent;
+$ani: ani 2s linear;
+$ani2: ani2 2s linear;
+$color-white:#fff;
+$color-gray:#e0e0e0;
+
+#intro{
+    position: absolute; left:50%; top:50%; transform: translate(-50%, -50%); width:400px; height:auto; z-index: 10;
+    #loadingBar{
+        position: relative; width:100%; height:10px; background:#333; border-radius: 5px; margin-top:80px;
+        #bar{
+            width:100%; height:100%; background: linear-gradient(to left,#008aff,#00ffe7); animation: animate 2s linear; border-radius: 5px;
+            &:before{
+                content:''; position: absolute; left:0; top:0; width:100%; height:100%; background: linear-gradient(to left,#008aff,#00ffe7); filter: blur(10px);
+            }
+            &::after{
+                content:''; position: absolute; left:0; top:0; width:100%; height:100%; background: linear-gradient(to left,#008aff,#00ffe7); filter: blur(30px);
+            }
+        }
+    }
+}
+
+.triangle_wrap{position: relative; width:120px; height:150px; margin: 0 auto; z-index: 10; }
+.triangle{
+    position: absolute; 
+    box-sizing: border-box;
+    width: 0;
+    height: 0;
+    border-left:$border-15trans;
+    border-right:$border-15trans;
+    &.tri1{
+        left:0; top:0;
+        @include borderTop;
+        animation: $ani;
+    }
+    &.tri2{
+        left:15px; top:0;
+        @include borderBot;
+        animation: $ani;
+        animation-delay: 0.2s;
+    }
+    &.tri3{
+        left:15px; top:25px;
+        @include borderTop;
+        animation: $ani;
+        animation-delay: 0.1s;
+    }
+    &.tri4{
+        left:30px; top:25px;
+        @include borderBot;
+        animation: $ani;
+        animation-delay: 0.4s;
+    }
+    &.tri5{
+        left:30px; top:50px;
+        @include borderTop;
+        animation: $ani;
+    }
+    &.tri6{
+        left:45px; top:50px;
+        @include borderBot;
+        animation: $ani;
+        animation-delay: 0.1s;
+    }
+    &.tri7{
+        left:60px; top:50px;
+        @include borderTop;
+        animation: $ani2;
+        animation-delay: 0.3s;
+        opacity: 0;
+    }
+    &.tri8{
+        left:60px; top:25px;
+        @include borderBot;
+        animation: $ani;
+        animation-delay: 0.4s;
+    }
+    &.tri9{
+        left:75px; top:25px;
+        border-top:25px solid #71f1f5;
+        animation: $ani;
+        animation-delay: 0.6s;
+    }
+    &.tri10{
+        left:75px; top:0;
+        border-bottom:25px solid #2ccaef;
+        animation: $ani;
+        animation-delay: 0.2s;
+    }
+    &.tri11{
+        left:90px; top:0;
+        border-top:25px solid #2497d0;
+        animation: $ani;
+        animation-delay: 0.4s;
+    }
+    &.tri12{
+        left:45px; top:75px;
+        @include borderTop;
+        animation: $ani;
+        animation-delay: 0.1s;
+    }
+    &.tri13{
+        left:30px; top:75px;
+        @include borderBot;
+        animation: $ani;
+        animation-delay: 0.3s;
+    }
+    &.tri14{
+        left:30px; top:100px;
+        @include borderTop;
+        animation: $ani;
+        animation-delay: 0.5s;
+    }
+    &.tri15{
+        left:15px; top:100px;
+        @include borderBot;
+        animation: $ani;
+        animation-delay: 0.2s;
+    }
+    &.tri16{
+        left:15px; top:125px;
+        @include borderTop;
+        animation: $ani;
+        animation-delay: 0.1s;
+    }
+    &.tri17{
+        left:0; top:125px;
+        @include borderBot;
+        animation: $ani;
+        animation-delay: 0.5s;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    #intro{
+        width:70%; 
+        #loadingBar{
+            position: relative; width:100%; height:7px; background:#333; border-radius: 4px; margin-top:50px;
+            #bar{
+                width:100%; height:100%; background: linear-gradient(to left,#008aff,#00ffe7); animation: animate 3s linear; border-radius: 4px;
+                &:before{
+                    content:''; position: absolute; left:0; top:0; width:100%; height:100%; background: linear-gradient(to left,#008aff,#00ffe7); filter: blur(10px);
+                }
+                &::after{
+                    content:''; position: absolute; left:0; top:0; width:100%; height:100%; background: linear-gradient(to left,#008aff,#00ffe7); filter: blur(30px);
+                }
+            }
+        }
+    }
+
+    .triangle_wrap{position: relative; width:80px; height:120px; margin: 0 auto; z-index: 10; }
+    .triangle{
+        position: absolute; 
+        box-sizing: border-box;
+        width: 0;
+        height: 0;
+        border-left:$media-border-10trans;
+        border-right:$media-border-10trans;
+        &.tri1{
+            left:0; top:0;
+            @include mediaBorderTop;
+            animation: $ani;
+        }
+        &.tri2{
+            left:10px; top:0;
+            @include mediaBorderBot;
+            animation: $ani;
+            animation-delay: 0.2s;
+        }
+        &.tri3{
+            left:10px; top:20px;
+            @include mediaBorderTop;
+            animation: $ani;
+            animation-delay: 0.1s;
+        }
+        &.tri4{
+            left:20px; top:20px;
+            @include mediaBorderBot;
+            animation: $ani;
+            animation-delay: 0.4s;
+        }
+        &.tri5{
+            left:20px; top:40px;
+            @include mediaBorderTop;
+            animation: $ani;
+        }
+        &.tri6{
+            left:30px; top:40px;
+            @include mediaBorderBot;
+            animation: $ani;
+            animation-delay: 0.1s;
+        }
+        &.tri7{
+            left:40px; top:40px;
+            @include mediaBorderTop;
+            animation: $ani2;
+            animation-delay: 0.3s;
+            opacity: 0;
+        }
+        &.tri8{
+            left:40px; top:20px;
+            @include mediaBorderBot;
+            animation: $ani;
+            animation-delay: 0.4s;
+        }
+        &.tri9{
+            left:50px; top:20px;
+            border-top:20px solid #71f1f5;
+            animation: $ani;
+            animation-delay: 0.6s;
+        }
+        &.tri10{
+            left:50px; top:0;
+            border-bottom:20px solid #2ccaef;
+            animation: $ani;
+            animation-delay: 0.2s;
+        }
+        &.tri11{
+            left:60px; top:0;
+            border-top:20px solid #2497d0;
+            animation: $ani;
+            animation-delay: 0.4s;
+        }
+        &.tri12{
+            left:30px; top:60px;
+            @include mediaBorderTop;
+            animation: $ani;
+            animation-delay: 0.1s;
+        }
+        &.tri13{
+            left:20px; top:60px;
+            @include mediaBorderBot;
+            animation: $ani;
+            animation-delay: 0.3s;
+        }
+        &.tri14{
+            left:20px; top:80px;
+            @include mediaBorderTop;
+            animation: $ani;
+            animation-delay: 0.5s;
+        }
+        &.tri15{
+            left:10px; top:80px;
+            @include mediaBorderBot;
+            animation: $ani;
+            animation-delay: 0.2s;
+        }
+        &.tri16{
+            left:10px; top:100px;
+            @include mediaBorderTop;
+            animation: $ani;
+            animation-delay: 0.1s;
+        }
+        &.tri17{
+            left:0; top:100px;
+            @include mediaBorderBot;
+            animation: $ani;
+            animation-delay: 0.5s;
+        }
+    }
+}

@@ -1,0 +1,14 @@
+@mixin borderBot{
+    border-bottom:25px solid $color-white; 
+}
+@mixin borderTop{
+    border-top:25px solid $color-gray;
+}
+
+@mixin mediaBorderBot{
+    border-bottom:20px solid $color-white; 
+}
+@mixin mediaBorderTop{
+    border-top:20px solid $color-gray;
+}
+
