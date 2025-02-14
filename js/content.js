@@ -9,12 +9,14 @@ $(document).ready(function() {
                 role: "Frontend Developer",
                 description: "프로젝트에 대한 상세 설명과 작업 이슈 해결 과정",
                 background: "project1-bg.jpg"
-            },
+            }
             // ... 추가 프로젝트 데이터
         ];
 
         const $contentWrap = $('.content_wrap');
+        const $intro = $('#intro');
 
+        // 프로젝트 HTML 생성 및 추가
         projects.forEach(project => {
             const projectHTML = `
                 <div class="project_item">
@@ -45,15 +47,17 @@ $(document).ready(function() {
             $contentWrap.append(projectHTML);
         });
 
-        // 인트로 애니메이션 완료 후 컨텐츠 표시
-        setTimeout(() => {
-            $contentWrap.addClass('show');
-        }, 3500); // 인트로 애니메이션 시간(3000ms) + 약간의 여유(500ms)
+        // 인트로 애니메이션이 끝난 후 실행될 함수
+        function showContent() {
+            $intro.fadeOut(800, function() {
+                $contentWrap.addClass('show');
+            });
+        }
+
+        // 인트로 타이머 설정
+        setTimeout(showContent, 3000);
     }
 
+    // 초기화
     initializeProjects();
-
-    setTimeout(function() {
-        $('#intro').fadeOut('slow');
-    }, 3000);
 });
