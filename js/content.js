@@ -60,9 +60,7 @@ $(document).ready(function() {
                                 <p>${project.role}</p>
                             </div>
                         </div>
-                        <div class="description_wrapper">
-                            <p class="project_description">${project.description}</p>
-                        </div>
+                        <p class="project_description">${project.description}</p>
                     </div>
                 </div>
             `;

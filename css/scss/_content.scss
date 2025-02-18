@@ -147,19 +147,7 @@ $dark-bg: #080808;
                 font-size: 15px;
                 line-height: 1.7;
                 color: rgba(255, 255, 255, 0.75);
-                height: calc(1.7em * 2); // 2줄 높이로 고정
-                overflow: hidden;
-                transition: all 0.3s ease;
                 margin-bottom: 20px; // 확장 시 여유 공간
-    
-                &::after {
-                    content: '...';
-                    position: absolute;
-                    right: 0;
-                    bottom: 0;
-                    background: $dark-bg;
-                    padding-left: 4px;
-                }
     
                 &::before {
                     content: '';
@@ -218,18 +206,6 @@ $dark-bg: #080808;
                     stroke-linecap: round;
                     stroke-linejoin: round;
                 }
-            }
-        }
-        
-        .description_wrapper {
-            position: relative;
-            z-index: 5;
-            background: inherit;
-            border-radius: inherit;
-            transition: all 0.3s ease;
-    
-            &:hover {
-                transform: translateZ(0); // 새로운 쌓임 맥락 생성
             }
         }
     }

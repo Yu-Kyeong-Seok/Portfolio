@@ -605,19 +605,7 @@ body {
   font-size: 15px;
   line-height: 1.7;
   color: rgba(255, 255, 255, 0.75);
-  height: 3.4em;
-  overflow: hidden;
-  -webkit-transition: all 0.3s ease;
-  transition: all 0.3s ease;
   margin-bottom: 20px;
-}
-.content_wrap .project_item .project_content .project_description::after {
-  content: "...";
-  position: absolute;
-  right: 0;
-  bottom: 0;
-  background: #080808;
-  padding-left: 4px;
 }
 .content_wrap .project_item .project_content .project_description::before {
   content: "";
@@ -679,18 +667,6 @@ body {
   stroke-width: 2;
   stroke-linecap: round;
   stroke-linejoin: round;
-}
-.content_wrap .project_item .description_wrapper {
-  position: relative;
-  z-index: 5;
-  background: inherit;
-  border-radius: inherit;
-  -webkit-transition: all 0.3s ease;
-  transition: all 0.3s ease;
-}
-.content_wrap .project_item .description_wrapper:hover {
-  -webkit-transform: translateZ(0);
-          transform: translateZ(0);
 }
 
 @-webkit-keyframes animate {
