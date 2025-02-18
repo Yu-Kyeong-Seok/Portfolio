@@ -8,8 +8,18 @@ $(document).ready(function() {
                 contribution: "100%",
                 role: "Frontend Developer",
                 description: "프로젝트에 대한 상세 설명과 작업 이슈 해결 과정",
-                background: "project1-bg.jpg"
-            }
+                link:"https://naver.com",
+                background: "https://picsum.photos/200/300​"
+            },
+            {
+                title: "Project 2",
+                period: "2024.01 - 2024.02",
+                skills: ["HTML5", "SCSS", "JavaScript", "React"],
+                contribution: "100%",
+                role: "Frontend Developer",
+                description: "프로젝트에 대한 상세 설명과 작업 이슈 해결 과정프로젝트에 대한 상세 설명과 작업 이슈 해결 과정프로젝트에 대한 상세 설명과 작업 이슈 해결 과정프로젝트에 대한 상세 설명과 작업 이슈 해결 과정프로젝트에 대한 상세 설명과 작업 이슈 해결 과정",
+                background: "https://picsum.photos/200/300​"
+            },
             // ... 추가 프로젝트 데이터
         ];
 
@@ -18,9 +28,24 @@ $(document).ready(function() {
 
         // 프로젝트 HTML 생성 및 추가
         projects.forEach(project => {
+            const hasLink = project.link ? 'has-link' : '';
+            const linkHTML = project.link ? `
+                <div class="project_link">
+                    <a href="${project.link}" target="_blank">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                            <polyline points="15 3 21 3 21 9"></polyline>
+                            <line x1="10" y1="14" x2="21" y2="3"></line>
+                        </svg>
+                        View Project
+                    </a>
+                </div>
+            ` : '';
+
             const projectHTML = `
-                <div class="project_item">
+                <div class="project_item ${hasLink}">
                     <div class="project_bg" style="background-image: url(${project.background})"></div>
+                    ${linkHTML}
                     <div class="project_content">
                         <h3 class="project_title">
                             ${project.title}

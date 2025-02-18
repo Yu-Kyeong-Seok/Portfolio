@@ -511,19 +511,6 @@ body {
   position: relative;
   border: 1px solid rgba(0, 240, 255, 0.1);
 }
-.content_wrap .project_item::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  border-radius: 15px;
-  background: linear-gradient(45deg, rgba(0, 240, 255, 0), rgba(0, 255, 221, 0));
-  -webkit-transition: all 0.4s ease;
-  transition: all 0.4s ease;
-  z-index: 1;
-}
 .content_wrap .project_item:hover {
   -webkit-transform: translateY(-10px) scale(1.02);
           transform: translateY(-10px) scale(1.02);
@@ -531,9 +518,6 @@ body {
   border-color: rgba(0, 240, 255, 0.3);
   -webkit-box-shadow: 0 0 10px rgba(0, 240, 255, 0.45), 0 0 20px rgba(0, 240, 255, 0.3), 0 0 30px rgba(0, 240, 255, 0.15), 0 0 40px rgba(0, 240, 255, 0.075);
           box-shadow: 0 0 10px rgba(0, 240, 255, 0.45), 0 0 20px rgba(0, 240, 255, 0.3), 0 0 30px rgba(0, 240, 255, 0.15), 0 0 40px rgba(0, 240, 255, 0.075);
-}
-.content_wrap .project_item:hover::before {
-  background: linear-gradient(45deg, rgba(0, 240, 255, 0.1), rgba(0, 255, 221, 0.1));
 }
 .content_wrap .project_item:hover .project_title {
   color: #fff;
@@ -591,13 +575,6 @@ body {
   -webkit-backdrop-filter: blur(5px);
           backdrop-filter: blur(5px);
 }
-.content_wrap .project_item .project_content .project_skills .skill:hover {
-  background: rgba(0, 240, 255, 0.2);
-  -webkit-box-shadow: 0 0 10px rgba(0, 240, 255, 0.24), 0 0 20px rgba(0, 240, 255, 0.16), 0 0 30px rgba(0, 240, 255, 0.08), 0 0 40px rgba(0, 240, 255, 0.04);
-          box-shadow: 0 0 10px rgba(0, 240, 255, 0.24), 0 0 20px rgba(0, 240, 255, 0.16), 0 0 30px rgba(0, 240, 255, 0.08), 0 0 40px rgba(0, 240, 255, 0.04);
-  -webkit-transform: translateY(-2px);
-          transform: translateY(-2px);
-}
 .content_wrap .project_item .project_content .project_info {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -621,9 +598,17 @@ body {
   font-weight: 500;
 }
 .content_wrap .project_item .project_content .project_description {
+  position: relative;
   font-size: 15px;
   line-height: 1.7;
   color: rgba(255, 255, 255, 0.75);
+  overflow: hidden;
+  display: -webkit-box;
+  line-clamp: 2;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease;
 }
 .content_wrap .project_item .project_content .project_description::before {
   content: "";
@@ -635,6 +620,49 @@ body {
   margin-bottom: 15px;
   -webkit-box-shadow: 0 0 10px rgba(0, 240, 255, 0.15), 0 0 20px rgba(0, 240, 255, 0.1), 0 0 30px rgba(0, 240, 255, 0.05), 0 0 40px rgba(0, 240, 255, 0.025);
           box-shadow: 0 0 10px rgba(0, 240, 255, 0.15), 0 0 20px rgba(0, 240, 255, 0.1), 0 0 30px rgba(0, 240, 255, 0.05), 0 0 40px rgba(0, 240, 255, 0.025);
+}
+.content_wrap .project_item .project_content:hover .project_description {
+  line-clamp: unset;
+  -webkit-line-clamp: unset;
+  max-height: none;
+}
+.content_wrap .project_item .project_link {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  opacity: 0;
+  -webkit-transform: translateY(-10px);
+          transform: translateY(-10px);
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+  z-index: 3;
+}
+.content_wrap .project_item .project_link a {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  background: rgba(0, 240, 255, 0.1);
+  border: 1px solid rgba(0, 240, 255, 0.3);
+  border-radius: 20px;
+  color: rgba(255, 255, 255, 0.9);
+  text-decoration: none;
+  font-size: 14px;
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+}
+.content_wrap .project_item .project_link a:hover {
+  background: rgba(0, 240, 255, 0.2);
+  -webkit-box-shadow: 0 0 10px rgba(0, 240, 255, 0.24), 0 0 20px rgba(0, 240, 255, 0.16), 0 0 30px rgba(0, 240, 255, 0.08), 0 0 40px rgba(0, 240, 255, 0.04);
+          box-shadow: 0 0 10px rgba(0, 240, 255, 0.24), 0 0 20px rgba(0, 240, 255, 0.16), 0 0 30px rgba(0, 240, 255, 0.08), 0 0 40px rgba(0, 240, 255, 0.04);
+}
+.content_wrap .project_item .project_link a svg {
+  width: 16px;
+  height: 16px;
 }
 
 @-webkit-keyframes animate {
