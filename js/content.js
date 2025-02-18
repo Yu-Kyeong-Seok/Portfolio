@@ -8,8 +8,7 @@ $(document).ready(function() {
                 contribution: "100%",
                 role: "Frontend Developer",
                 description: "프로젝트에 대한 상세 설명과 작업 이슈 해결 과정",
-                link:"https://naver.com",
-                background: "https://picsum.photos/200/300​"
+                link:"https://naver.com"
             },
             {
                 title: "Project 2",
@@ -17,10 +16,8 @@ $(document).ready(function() {
                 skills: ["HTML5", "SCSS", "JavaScript", "React"],
                 contribution: "100%",
                 role: "Frontend Developer",
-                description: "프로젝트에 대한 상세 설명과 작업 이슈 해결 과정프로젝트에 대한 상세 설명과 작업 이슈 해결 과정프로젝트에 대한 상세 설명과 작업 이슈 해결 과정프로젝트에 대한 상세 설명과 작업 이슈 해결 과정프로젝트에 대한 상세 설명과 작업 이슈 해결 과정",
-                background: "https://picsum.photos/200/300​"
+                description: "프로젝트에 대한 상세 설명과 작업 이슈 해결 과정프로젝트에 대한 상세 설명과 작업 이슈 해결 과정프로젝트에 대한 상세 설명과 작업 이슈 해결 과정프로젝트에 대한 상세 설명과 작업 이슈 해결 과정프로젝트에 대한 상세 설명과 작업 이슈 해결 과정"
             },
-            // ... 추가 프로젝트 데이터
         ];
 
         const $contentWrap = $('.content_wrap');
@@ -44,7 +41,6 @@ $(document).ready(function() {
 
             const projectHTML = `
                 <div class="project_item ${hasLink}">
-                    <div class="project_bg" style="background-image: url(${project.background})"></div>
                     ${linkHTML}
                     <div class="project_content">
                         <h3 class="project_title">
@@ -64,7 +60,9 @@ $(document).ready(function() {
                                 <p>${project.role}</p>
                             </div>
                         </div>
-                        <p class="project_description">${project.description}</p>
+                        <div class="description_wrapper">
+                            <p class="project_description">${project.description}</p>
+                        </div>
                     </div>
                 </div>
             `;
