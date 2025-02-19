@@ -542,9 +542,11 @@ body {
   z-index: 2;
 }
 .content_wrap .project_item .project_content .project_title {
-  font-size: 28px;
+  font-size: 24px;
   font-weight: 600;
+  word-break: keep-all;
   margin-bottom: 25px;
+  margin-top: 25px;
   color: rgba(255, 255, 255, 0.95);
   -webkit-transition: all 0.3s ease;
   transition: all 0.3s ease;
@@ -617,14 +619,6 @@ body {
   margin-bottom: 15px;
   -webkit-box-shadow: 0 0 10px rgba(0, 240, 255, 0.15), 0 0 20px rgba(0, 240, 255, 0.1), 0 0 30px rgba(0, 240, 255, 0.05), 0 0 40px rgba(0, 240, 255, 0.025);
           box-shadow: 0 0 10px rgba(0, 240, 255, 0.15), 0 0 20px rgba(0, 240, 255, 0.1), 0 0 30px rgba(0, 240, 255, 0.05), 0 0 40px rgba(0, 240, 255, 0.025);
-}
-.content_wrap .project_item .project_content:hover .project_description {
-  height: auto;
-  max-height: 300px;
-  overflow: visible;
-}
-.content_wrap .project_item .project_content:hover .project_description::after {
-  display: none;
 }
 .content_wrap .project_item .project_link {
   position: absolute;
