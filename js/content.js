@@ -10,9 +10,11 @@ function initializeSkillTooltips() {
         $skills.on('click', function(e) {
             e.stopPropagation();
             
+            const $this = $(this);
+            
             // 이미 활성화된 스킬이면 툴팁 닫기
-            if ($(this).hasClass('active')) {
-                $(this).removeClass('active');
+            if ($this.hasClass('active')) {
+                $this.removeClass('active');
                 activeSkill = null;
                 return;
             }
@@ -22,8 +24,22 @@ function initializeSkillTooltips() {
                 $(activeSkill).removeClass('active');
             }
 
+            // 위치 계산을 위한 요소의 위치와 크기 정보 가져오기
+            const rect = this.getBoundingClientRect();
+            const parentRect = this.closest('.project_skills').getBoundingClientRect();
+
+            // 툴팁 위치 계산
+            const tooltipLeft = parentRect.left;
+            const tooltipTop = rect.top - 40; // 툴팁 높이와 여유 공간 고려
+
+            // CSS 변수로 위치 설정
+            $this.css({
+                '--tooltip-left': tooltipLeft + 'px',
+                '--tooltip-top': tooltipTop + 'px'
+            });
+
             // 현재 스킬 활성화
-            $(this).addClass('active');
+            $this.addClass('active');
             activeSkill = this;
         });
 
