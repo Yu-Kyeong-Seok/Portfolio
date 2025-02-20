@@ -655,8 +655,8 @@ body {
 .content_wrap .project_item .project_content .project_skills .skill.active::before, .content_wrap .project_item .project_content .project_skills .skill.active::after {
   opacity: 1;
   visibility: visible;
-  -webkit-transform: translateX(-50%) translateY(0);
-          transform: translateX(-50%) translateY(0);
+  -webkit-transform: translateX(0) translateY(0);
+          transform: translateX(0) translateY(0);
 }
 .content_wrap .project_item .project_content .project_info {
   display: grid;
