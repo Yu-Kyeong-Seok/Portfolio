@@ -594,7 +594,7 @@ body {
   border-radius: 8px;
   color: #fff;
   font-size: 12px;
-  white-space: nowrap;
+  white-space: normal;
   opacity: 0;
   visibility: hidden;
   -webkit-transition: all 0.3s ease;
@@ -607,6 +607,7 @@ body {
   width: -moz-max-content;
   width: max-content;
   max-width: 200px;
+  min-width: 150px;
   text-align: center;
 }
 .content_wrap .project_item .project_content .project_skills .skill::after {
@@ -617,7 +618,7 @@ body {
   -webkit-transform: translateX(-50%) translateY(10px);
           transform: translateX(-50%) translateY(10px);
   border: 6px solid transparent;
-  border-top-color: rgba(0, 240, 255, 0.3);
+  border-bottom-color: rgba(0, 240, 255, 0.3);
   opacity: 0;
   visibility: hidden;
   -webkit-transition: all 0.3s ease;

@@ -128,7 +128,7 @@ $dark-bg: #080808;
                         border-radius: 8px;
                         color: #fff;
                         font-size: 12px;
-                        white-space: nowrap;
+                        white-space: normal;
                         opacity: 0;
                         visibility: hidden;
                         transition: all 0.3s ease;
@@ -137,6 +137,7 @@ $dark-bg: #080808;
                         @include neon-glow($neon-blue, 0.3);
                         width: max-content;
                         max-width: 200px;
+                        min-width: 150px;
                         text-align: center;
                     }
             
@@ -147,7 +148,7 @@ $dark-bg: #080808;
                         left: 50%;
                         transform: translateX(-50%) translateY(10px);
                         border: 6px solid transparent;
-                        border-top-color: rgba($neon-blue, 0.3);
+                        border-bottom-color: rgba($neon-blue, 0.3);
                         opacity: 0;
                         visibility: hidden;
                         transition: all 0.3s ease;
