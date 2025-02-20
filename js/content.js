@@ -7,27 +7,27 @@ $(document).ready(function() {
                 skills: [
                     {
                         name: "React",
-                        description: "컴포넌트 기반 구조로 UI 설계 및 상태관리 구현"
+                        description: "헤더, 바텀탭 등 공통 컴포넌트 개발 및 상태관리"
                     },
                     {
                         name: "Next.js",
-                        description: "SSR 구현으로 SEO 최적화 및 페이지 라우팅 구성"
+                        description: "CSR에서 SSR로 전환하여 검색엔진 최적화(SEO) 구현"
                     },
                     {
                         name: "TypeScript",
-                        description: "타입 안정성 확보로 개발 생산성 향상"
+                        description: "컴포넌트 props와 상태에 대한 타입 안정성 확보"
                     },
                     {
                         name: "SCSS",
-                        description: "모듈화된 스타일링으로 일관된 디자인 시스템 구축"
+                        description: "마켓컬리 디자인 시스템에 맞춘 반응형 스타일링"
                     },
                     {
                         name: "node.js",
-                        description: "서버 환경 구축 및 API 엔드포인트 개발"
+                        description: "RESTful API 구현 및 백엔드 서버 환경 구축"
                     },
                     {
                         name: "mongoDB",
-                        description: "사용자 및 상품 데이터 스키마 설계 및 관리"
+                        description: "상품 데이터 및 사용자 정보 데이터베이스 관리"
                     }
                 ],
                 contribution: "50%",
@@ -41,23 +41,23 @@ $(document).ready(function() {
                 skills: [
                     {
                         name: "HTML5",
-                        description: "시맨틱 마크업으로 접근성 고려한 구조 설계"
+                        description: "토스의 컨벤션을 준수한 하이브리드 웹 마크업 구현"
                     },
                     {
                         name: "SCSS",
-                        description: "토스 디자인 시스템에 맞춘 모듈화된 스타일링"
+                        description: "토스의 심플한 디자인 시스템을 반영한 컴포넌트 스타일링"
                     },
                     {
                         name: "JavaScript",
-                        description: "동적 높이 조절 및 인터랙션 효과 구현"
+                        description: "웹뷰 환경에서의 동적 높이 조절 및 로딩 인터랙션 구현"
                     },
                     {
                         name: "jQuery",
-                        description: "DOM 조작 및 애니메이션 효과 구현"
+                        description: "아코디언 및 텍스트 인터랙션의 반응형 동작 처리"
                     },
                     {
                         name: "kramer",
-                        description: "프로토타입 구현 및 디자인 시안 확인"
+                        description: "디자인 시안 검토 및 인터랙션 프로토타입 구현"
                     }
                 ],
                 contribution: "100%",
@@ -70,19 +70,19 @@ $(document).ready(function() {
                 skills: [
                     {
                         name: "HTML5",
-                        description: "시맨틱 마크업으로 접근성 고려한 구조 설계"
+                        description: "웹 접근성 준수를 위한 시맨틱 태그 구조와 스크린리더 최적화"
                     },
                     {
                         name: "SCSS",
-                        description: "토스 디자인 시스템에 맞춘 모듈화된 스타일링"
+                        description: "safe-area 속성을 활용한 iOS 웹뷰 대응 및 반응형 스타일링"
                     },
                     {
                         name: "JavaScript",
-                        description: "동적 높이 조절 및 인터랙션 효과 구현"
+                        description: "디바이스 환경 감지 및 iOS 웹뷰 대응 로직 구현"
                     },
                     {
                         name: "jQuery",
-                        description: "DOM 조작 및 애니메이션 효과 구현"
+                        description: "키보드 접근성 향상을 위한 인터랙션 처리 및 이벤트 핸들링"
                     }
                 ],
                 contribution: "100%",
@@ -95,23 +95,23 @@ $(document).ready(function() {
                 skills: [
                     {
                         name: "HTML5",
-                        description: "시맨틱 마크업으로 접근성 고려한 구조 설계"
+                        description: "웹 접근성을 고려한 시맨틱 마크업과 대환대출 서비스 구조 설계"
                     },
                     {
                         name: "SCSS",
-                        description: "토스 디자인 시스템에 맞춘 모듈화된 스타일링"
+                        description: "대규모 코드베이스에서의 모듈화된 스타일 구조 설계"
                     },
                     {
                         name: "CSS",
-                        description: "토스 디자인 시스템에 맞춘 모듈화된 스타일링"
+                        description: "멀티클래스 활용으로 기존 코드와의 충돌 방지 및 유지보수성 확보"
                     },
                     {
                         name: "JavaScript",
-                        description: "동적 높이 조절 및 인터랙션 효과 구현"
+                        description: "데이터 상태별 UI 처리 및 동적 컴포넌트 제어"
                     },
                     {
                         name: "jQuery",
-                        description: "DOM 조작 및 애니메이션 효과 구현"
+                        description: "대용량 데이터 처리를 위한 DOM 조작 및 이벤트 핸들링"
                     }
                 ],
                 contribution: "100%",
@@ -125,19 +125,19 @@ $(document).ready(function() {
                 skills: [
                     {
                         name: "HTML5",
-                        description: "시맨틱 마크업으로 접근성 고려한 구조 설계"
+                        description: "최적의 사용자 경험을 위한 이벤트 페이지 마크업 구조화"
                     },
                     {
-                        name: "SCSS",
-                        description: "토스 디자인 시스템에 맞춘 모듈화된 스타일링"
+                        name: "CSS",
+                        description: "브랜드별 아이덴티티를 반영한 스타일링 및 애니메이션 구현"
                     },
                     {
                         name: "JavaScript",
-                        description: "동적 높이 조절 및 인터랙션 효과 구현"
+                        description: "이미지와 텍스트의 스크롤 기반 인터랙션 효과 구현"
                     },
                     {
                         name: "jQuery",
-                        description: "DOM 조작 및 애니메이션 효과 구현"
+                        description: "브랜드별 이벤트 페이지의 다양한 모션 효과와 애니메이션 처리"
                     }
                 ],
                 contribution: "100%",
@@ -151,19 +151,19 @@ $(document).ready(function() {
                 skills: [
                     {
                         name: "HTML5",
-                        description: "시맨틱 마크업으로 접근성 고려한 구조 설계"
+                        description: "웹 표준을 준수한 시맨틱 마크업으로 펀딩 프로세스 구조화"
                     },
                     {
                         name: "SCSS",
-                        description: "토스 디자인 시스템에 맞춘 모듈화된 스타일링"
+                        description: "반응형 디자인 및 컴포넌트 모듈화로 일관된 UI 스타일링"
                     },
                     {
                         name: "JavaScript",
-                        description: "동적 높이 조절 및 인터랙션 효과 구현"
+                        description: "펀딩 프로세스 유효성 검사 및 사용자 인터랙션 구현"
                     },
                     {
                         name: "jQuery",
-                        description: "DOM 조작 및 애니메이션 효과 구현"
+                        description: "데이터 요청 처리 및 동적 UI 업데이트 구현"
                     }
                 ],
                 contribution: "100%",
