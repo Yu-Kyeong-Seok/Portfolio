@@ -24,19 +24,31 @@ function initializeSkillTooltips() {
                 $(activeSkill).removeClass('active');
             }
 
-            // 위치 계산을 위한 요소의 위치와 크기 정보 가져오기
-            const rect = this.getBoundingClientRect();
+            // 위치 계산을 위한 요소 정보 가져오기
+            const skillRect = this.getBoundingClientRect();
             const parentRect = this.closest('.project_skills').getBoundingClientRect();
+            const tooltipWidth = 200; // 툴팁의 최대 너비
 
-            // 툴팁 위치 계산
-            const tooltipLeft = parentRect.left;
-            const tooltipTop = rect.top - 40; // 툴팁 높이와 여유 공간 고려
+            // 스킬의 왼쪽 끝에서 부모 컨테이너의 왼쪽 끝까지의 거리
+            const distanceFromLeft = skillRect.left - parentRect.left;
+            // 부모 컨테이너의 오른쪽 끝에서 스킬의 오른쪽 끝까지의 거리
+            const distanceFromRight = parentRect.right - skillRect.right;
 
-            // CSS 변수로 위치 설정
-            $this.css({
-                '--tooltip-left': tooltipLeft + 'px',
-                '--tooltip-top': tooltipTop + 'px'
-            });
+            // 툴팁이 왼쪽으로 넘어갈 경우
+            if (distanceFromLeft < tooltipWidth / 2) {
+                $this.css('--tooltip-position', '0');
+                $this.css('--tooltip-transform', 'translateY(10px)');
+            }
+            // 툴팁이 오른쪽으로 넘어갈 경우
+            else if (distanceFromRight < tooltipWidth / 2) {
+                $this.css('--tooltip-position', '100%');
+                $this.css('--tooltip-transform', 'translateX(-100%) translateY(10px)');
+            }
+            // 충분한 공간이 있는 경우 중앙 정렬
+            else {
+                $this.css('--tooltip-position', '50%');
+                $this.css('--tooltip-transform', 'translateX(-50%) translateY(10px)');
+            }
 
             // 현재 스킬 활성화
             $this.addClass('active');
