@@ -12,45 +12,43 @@ function initializeSkillTooltips() {
             
             const $this = $(this);
             
-            // 이미 활성화된 스킬이면 툴팁 닫기
             if ($this.hasClass('active')) {
                 $this.removeClass('active');
                 activeSkill = null;
                 return;
             }
 
-            // 다른 활성화된 스킬이 있다면 비활성화
             if (activeSkill) {
                 $(activeSkill).removeClass('active');
             }
 
-            // 위치 계산을 위한 요소 정보 가져오기
+            // 위치 계산
             const skillRect = this.getBoundingClientRect();
-            const parentRect = this.closest('.project_skills').getBoundingClientRect();
-            const tooltipWidth = 200; // 툴팁의 최대 너비
+            const tooltipWidth = 200; // 툴팁 최대 너비
+            const screenWidth = window.innerWidth;
+            
+            // 스킬의 왼쪽 위치가 화면 왼쪽에서 얼마나 떨어져 있는지
+            const skillLeftOffset = skillRect.left;
+            // 스킬의 오른쪽 위치부터 화면 오른쪽까지 남은 공간
+            const remainingRight = screenWidth - (skillRect.left + skillRect.width);
 
-            // 스킬의 왼쪽 끝에서 부모 컨테이너의 왼쪽 끝까지의 거리
-            const distanceFromLeft = skillRect.left - parentRect.left;
-            // 부모 컨테이너의 오른쪽 끝에서 스킬의 오른쪽 끝까지의 거리
-            const distanceFromRight = parentRect.right - skillRect.right;
+            let tooltipPosition;
 
-            // 툴팁이 왼쪽으로 넘어갈 경우
-            if (distanceFromLeft < tooltipWidth / 2) {
-                $this.css('--tooltip-position', '0');
-                $this.css('--tooltip-transform', 'translateY(10px)');
+            // 왼쪽에 충분한 공간이 없는 경우
+            if (skillLeftOffset < tooltipWidth / 2) {
+                tooltipPosition = 10; // 최소 여백
             }
-            // 툴팁이 오른쪽으로 넘어갈 경우
-            else if (distanceFromRight < tooltipWidth / 2) {
-                $this.css('--tooltip-position', '100%');
-                $this.css('--tooltip-transform', 'translateX(-100%) translateY(10px)');
+            // 오른쪽에 충분한 공간이 없는 경우
+            else if (remainingRight < tooltipWidth / 2) {
+                tooltipPosition = screenWidth - tooltipWidth - 10;
             }
-            // 충분한 공간이 있는 경우 중앙 정렬
+            // 중앙 정렬이 가능한 경우
             else {
-                $this.css('--tooltip-position', '50%');
-                $this.css('--tooltip-transform', 'translateX(-50%) translateY(10px)');
+                tooltipPosition = skillRect.left + (skillRect.width / 2) - (tooltipWidth / 2);
             }
 
-            // 현재 스킬 활성화
+            // ::before 가상 요소의 위치를 CSS 변수로 설정
+            $this.css('--tooltip-left', `${tooltipPosition}px`);
             $this.addClass('active');
             activeSkill = this;
         });
