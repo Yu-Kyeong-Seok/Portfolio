@@ -248,6 +248,11 @@ $dark-bg: #080808;
                 font-size: 14px;
                 transition: all 0.3s ease;
                 @include neon-glow($neon-blue, 0.3);
+
+                @media (max-width: 768px) {
+                    padding: 6px 10px;
+                    font-size:12px;
+                }
                 
                 &:hover {
                     background: rgba($neon-blue, 0.25);
