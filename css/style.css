@@ -614,6 +614,14 @@ body {
   min-width: 150px;
   text-align: center;
 }
+@media (max-width: 768px) {
+  .content_wrap .project_item .project_content .project_skills .skill::before {
+    left: var(--tooltip-left, 50%);
+    -webkit-transform: translateY(10px);
+            transform: translateY(10px);
+    position: absolute;
+  }
+}
 .content_wrap .project_item .project_content .project_skills .skill::after {
   content: "";
   position: absolute;

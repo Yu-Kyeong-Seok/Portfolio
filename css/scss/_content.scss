@@ -145,6 +145,12 @@ $dark-bg: #080808;
                         max-width: 200px;
                         min-width: 150px;
                         text-align: center;
+
+                        @media (max-width: 768px) {
+                            left: var(--tooltip-left, 50%);
+                            transform: translateY(10px);
+                            position: absolute;
+                        }
                     }
             
                     &::after {
