@@ -22,28 +22,32 @@ function initializeSkillTooltips() {
                 $(activeSkill).removeClass('active');
             }
 
-            // 툴팁 위치 계산
-            const skillRect = this.getBoundingClientRect();
-            const projectSkills = this.closest('.project_skills');
-            const containerRect = projectSkills.getBoundingClientRect();
-            
-            // 컨테이너 기준으로 스킬의 중앙 위치 계산
-            const skillCenterX = skillRect.left + (skillRect.width / 2) - containerRect.left;
-            const containerWidth = containerRect.width;
+            // project_skills의 너비 계산
+            const $projectSkills = $(this).closest('.project_skills');
+            const skillsWidth = $projectSkills.innerWidth();
             const tooltipWidth = 200; // 툴팁 최대 너비
-            
-            // 툴팁이 컨테이너를 벗어나는지 체크
-            if (skillCenterX < tooltipWidth / 2) {
-                // 왼쪽 끝에 가까울 때
-                $this.css('--tooltip-left', `${tooltipWidth / 2}px`);
-            } else if (skillCenterX > containerWidth - tooltipWidth / 2) {
-                // 오른쪽 끝에 가까울 때
-                $this.css('--tooltip-left', `${containerWidth - tooltipWidth / 2}px`);
-            } else {
-                // 중앙에 있을 때
-                $this.css('--tooltip-left', `${skillCenterX}px`);
+
+            // 스킬의 상대적 위치 계산
+            const skillOffset = $(this).position().left;
+            const skillWidth = $(this).outerWidth();
+            const skillCenter = skillOffset + (skillWidth / 2);
+
+            let tooltipLeft;
+
+            // 왼쪽에 너무 가까운 경우
+            if (skillCenter < tooltipWidth / 2) {
+                tooltipLeft = 0;
+            }
+            // 오른쪽에 너무 가까운 경우
+            else if (skillCenter > skillsWidth - tooltipWidth / 2) {
+                tooltipLeft = skillsWidth - tooltipWidth;
+            }
+            // 중앙에 있는 경우
+            else {
+                tooltipLeft = skillCenter - tooltipWidth / 2;
             }
 
+            $this.css('--tooltip-left', `${tooltipLeft}px`);
             $this.addClass('active');
             activeSkill = this;
         });
