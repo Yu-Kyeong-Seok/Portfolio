@@ -173,11 +173,8 @@ $(document).ready(function() {
             }
         ];
 
-        const $contentWrap = $('.content_wrap');
-        const $intro = $('#intro');
-
-        // 프로젝트 HTML 생성 및 추가
-        projects.forEach(project => {
+        // HTML 생성 및 추가
+        function generateProjectHTML(project) {
             const hasLink = project.link ? 'has-link' : '';
             const linkHTML = project.link ? `
                 <div class="project_link">
@@ -198,7 +195,7 @@ $(document).ready(function() {
                 </span>
             `).join('');
 
-            const projectHTML = `
+            return `
                 <div class="project_item ${hasLink}">
                     ${linkHTML}
                     <div class="project_content">
@@ -223,7 +220,14 @@ $(document).ready(function() {
                     </div>
                 </div>
             `;
-            
+        }
+
+        const $contentWrap = $('.content_wrap');
+        const $intro = $('#intro');
+
+        // 각 프로젝트 HTML 생성 및 추가
+        projects.forEach(project => {
+            const projectHTML = generateProjectHTML(project);
             $contentWrap.append(projectHTML);
         });
 
@@ -236,46 +240,64 @@ $(document).ready(function() {
 
         // 인트로 타이머 설정
         setTimeout(showContent, 3000);
+    }
 
-        const $skills = $('.skill');
-        let activeSkill = null;
-
-        // 모바일 환경 체크
+    function initializeSkillTooltips() {
         const isMobile = window.matchMedia('(max-width: 768px)').matches;
-
+        let activeSkill = null;
+    
+        // PC 환경에서는 CSS hover로 처리되므로 모바일일 때만 처리
         if (isMobile) {
-            // 모바일: 클릭 이벤트
+            const $skills = $('.skill');
+            
+            // 각 스킬에 클릭 이벤트 바인딩
             $skills.on('click', function(e) {
                 e.stopPropagation();
-                const $this = $(this);
                 
-                // 이미 활성화된 스킬 클릭 시 비활성화
-                if ($this.hasClass('active')) {
-                    $this.removeClass('active');
+                // 이미 활성화된 스킬이면 툴팁 닫기
+                if ($(this).hasClass('active')) {
+                    $(this).removeClass('active');
                     activeSkill = null;
                     return;
                 }
-
+    
                 // 다른 활성화된 스킬이 있다면 비활성화
                 if (activeSkill) {
-                    activeSkill.removeClass('active');
+                    $(activeSkill).removeClass('active');
                 }
-
+    
                 // 현재 스킬 활성화
-                $this.addClass('active');
-                activeSkill = $this;
+                $(this).addClass('active');
+                activeSkill = this;
             });
-
-            // 문서 클릭 시 활성화된 툴팁 닫기
+    
+            // 문서 클릭 시 툴팁 닫기
             $(document).on('click', function() {
                 if (activeSkill) {
-                    activeSkill.removeClass('active');
+                    $(activeSkill).removeClass('active');
+                    activeSkill = null;
+                }
+            });
+    
+            // 스크롤 시 활성화된 툴팁 닫기
+            $(window).on('scroll', function() {
+                if (activeSkill) {
+                    $(activeSkill).removeClass('active');
                     activeSkill = null;
                 }
             });
         }
     }
+});
 
-    // 초기화
-    initializeProjects();
+// 리사이즈 이벤트 처리
+$(window).on('resize', _.debounce(function() {
+    $('.skill').removeClass('active');
+    initializeSkillTooltips();
+}, 250));
+
+// 초기화 함수 호출
+$(document).ready(function() {
+    initializeProjects(); // 프로젝트 초기화
+    initializeSkillTooltips(); // 스킬 툴팁 초기화
 });
