@@ -7,47 +7,57 @@ function initializeSkillTooltips() {
         const $skills = $('.skill');
         
         // 각 스킬에 클릭 이벤트 바인딩
-        $skills.on('click', function(e) {
+        $skills.on('click', function (e) {
             e.stopPropagation();
-            
+        
             const $this = $(this);
-            
+        
             if ($this.hasClass('active')) {
                 $this.removeClass('active');
                 activeSkill = null;
                 return;
             }
-
+        
             if (activeSkill) {
                 $(activeSkill).removeClass('active');
             }
-
-            // project_skills의 너비 계산
-            const $projectSkills = $(this).closest('.project_skills');
+        
+            const $tooltip = $this.find('.tooltip'); // 툴팁 요소
+            $tooltip.css('display', 'block'); // 먼저 보이게 해서 크기 측정 가능하도록 설정
+        
+            const tooltipWidth = $tooltip.outerWidth(); // 실제 툴팁 너비
+            const skillOffset = $this.position().left; // 부모 기준 상대적 위치
+            const skillWidth = $this.outerWidth();
+            const skillCenter = skillOffset + skillWidth / 2;
+        
+            const $projectSkills = $this.closest('.project_skills');
             const skillsWidth = $projectSkills.innerWidth();
-            const tooltipWidth = 200; // 툴팁 최대 너비
-
-            // 스킬의 상대적 위치 계산
-            const skillOffset = $(this).position().left;
-            const skillWidth = $(this).outerWidth();
-            const skillCenter = skillOffset + (skillWidth / 2);
-
+            const windowWidth = $(window).width();
+        
             let tooltipLeft;
-
-            // 왼쪽에 너무 가까운 경우
-            if (skillCenter < tooltipWidth / 2) {
+        
+            // 툴팁이 화면 왼쪽 밖으로 나가는 경우
+            if (skillCenter - tooltipWidth / 2 < 0) {
                 tooltipLeft = 0;
             }
-            // 오른쪽에 너무 가까운 경우
-            else if (skillCenter > skillsWidth - tooltipWidth / 2) {
+            // 툴팁이 화면 오른쪽 밖으로 나가는 경우
+            else if (skillCenter + tooltipWidth / 2 > skillsWidth) {
                 tooltipLeft = skillsWidth - tooltipWidth;
             }
-            // 중앙에 있는 경우
+            // 기본적으로 가운데 정렬
             else {
                 tooltipLeft = skillCenter - tooltipWidth / 2;
             }
-
-            $this.css('--tooltip-left', `${tooltipLeft}px`);
+        
+            // 모바일에서 화면보다 넘어가는 경우 보정
+            if (tooltipLeft + tooltipWidth > windowWidth) {
+                tooltipLeft = windowWidth - tooltipWidth - 10;
+            }
+            if (tooltipLeft < 10) {
+                tooltipLeft = 10;
+            }
+        
+            $tooltip.css('left', `${tooltipLeft}px`);
             $this.addClass('active');
             activeSkill = this;
         });
