@@ -22,33 +22,28 @@ function initializeSkillTooltips() {
                 $(activeSkill).removeClass('active');
             }
 
-            // 현재 스킬과 부모 컨테이너의 위치 정보 가져오기
+            // 툴팁 위치 계산
             const skillRect = this.getBoundingClientRect();
             const projectSkills = this.closest('.project_skills');
             const containerRect = projectSkills.getBoundingClientRect();
-
-            // 툴팁이 보여질 때 필요한 계산
-            const tooltipWidth = 200; // 툴팁의 예상 너비
-            const skillLeftFromContainer = skillRect.left - containerRect.left; // 스킬의 컨테이너 기준 왼쪽 위치
+            
+            // 컨테이너 기준으로 스킬의 중앙 위치 계산
+            const skillCenterX = skillRect.left + (skillRect.width / 2) - containerRect.left;
             const containerWidth = containerRect.width;
-
-            let leftPosition;
-
-            // 왼쪽에 가까운 경우
-            if (skillLeftFromContainer < tooltipWidth / 2) {
-                leftPosition = 0;
-            }
-            // 오른쪽에 가까운 경우
-            else if ((containerWidth - skillLeftFromContainer) < tooltipWidth / 2) {
-                leftPosition = containerWidth - tooltipWidth;
-            }
-            // 중앙에 있는 경우
-            else {
-                leftPosition = skillLeftFromContainer - (tooltipWidth / 2) + (skillRect.width / 2);
+            const tooltipWidth = 200; // 툴팁 최대 너비
+            
+            // 툴팁이 컨테이너를 벗어나는지 체크
+            if (skillCenterX < tooltipWidth / 2) {
+                // 왼쪽 끝에 가까울 때
+                $this.css('--tooltip-left', `${tooltipWidth / 2}px`);
+            } else if (skillCenterX > containerWidth - tooltipWidth / 2) {
+                // 오른쪽 끝에 가까울 때
+                $this.css('--tooltip-left', `${containerWidth - tooltipWidth / 2}px`);
+            } else {
+                // 중앙에 있을 때
+                $this.css('--tooltip-left', `${skillCenterX}px`);
             }
 
-            // 위치 설정
-            $this.css('--tooltip-left', `${leftPosition}px`);
             $this.addClass('active');
             activeSkill = this;
         });
