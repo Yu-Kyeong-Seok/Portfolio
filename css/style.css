@@ -617,8 +617,8 @@ body {
 @media (max-width: 768px) {
   .content_wrap .project_item .project_content .project_skills .skill::before {
     left: var(--tooltip-left, 50%);
-    -webkit-transform: translateY(10px);
-            transform: translateY(10px);
+    -webkit-transform: translateX(0) translateY(0);
+            transform: translateX(0) translateY(0);
     position: absolute;
   }
 }
@@ -636,6 +636,13 @@ body {
   -webkit-transition: all 0.3s ease;
   transition: all 0.3s ease;
   pointer-events: none;
+}
+@media (max-width: 768px) {
+  .content_wrap .project_item .project_content .project_skills .skill::after {
+    -webkit-transform: translateX(0) translateY(0);
+            transform: translateX(0) translateY(0);
+    position: absolute;
+  }
 }
 @media (min-width: 769px) {
   .content_wrap .project_item .project_content .project_skills .skill:hover::before, .content_wrap .project_item .project_content .project_skills .skill:hover::after {

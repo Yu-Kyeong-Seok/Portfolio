@@ -148,7 +148,7 @@ $dark-bg: #080808;
 
                         @media (max-width: 768px) {
                             left: var(--tooltip-left, 50%);
-                            transform: translateY(10px);
+                            transform: translateX(0) translateY(0);
                             position: absolute;
                         }
                     }
@@ -165,6 +165,11 @@ $dark-bg: #080808;
                         visibility: hidden;
                         transition: all 0.3s ease;
                         pointer-events: none;
+
+                        @media (max-width: 768px) {
+                            transform: translateX(0) translateY(0);
+                            position: absolute;
+                        }
                     }
             
                     @media (min-width: 769px) {
