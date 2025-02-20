@@ -22,33 +22,33 @@ function initializeSkillTooltips() {
                 $(activeSkill).removeClass('active');
             }
 
-            // 위치 계산
+            // 현재 스킬과 부모 컨테이너의 위치 정보 가져오기
             const skillRect = this.getBoundingClientRect();
-            const tooltipWidth = 200; // 툴팁 최대 너비
-            const screenWidth = window.innerWidth;
-            
-            // 스킬의 왼쪽 위치가 화면 왼쪽에서 얼마나 떨어져 있는지
-            const skillLeftOffset = skillRect.left;
-            // 스킬의 오른쪽 위치부터 화면 오른쪽까지 남은 공간
-            const remainingRight = screenWidth - (skillRect.left + skillRect.width);
+            const projectSkills = this.closest('.project_skills');
+            const containerRect = projectSkills.getBoundingClientRect();
 
-            let tooltipPosition;
+            // 툴팁이 보여질 때 필요한 계산
+            const tooltipWidth = 200; // 툴팁의 예상 너비
+            const skillLeftFromContainer = skillRect.left - containerRect.left; // 스킬의 컨테이너 기준 왼쪽 위치
+            const containerWidth = containerRect.width;
 
-            // 왼쪽에 충분한 공간이 없는 경우
-            if (skillLeftOffset < tooltipWidth / 2) {
-                tooltipPosition = 10; // 최소 여백
+            let leftPosition;
+
+            // 왼쪽에 가까운 경우
+            if (skillLeftFromContainer < tooltipWidth / 2) {
+                leftPosition = 0;
             }
-            // 오른쪽에 충분한 공간이 없는 경우
-            else if (remainingRight < tooltipWidth / 2) {
-                tooltipPosition = screenWidth - tooltipWidth - 10;
+            // 오른쪽에 가까운 경우
+            else if ((containerWidth - skillLeftFromContainer) < tooltipWidth / 2) {
+                leftPosition = containerWidth - tooltipWidth;
             }
-            // 중앙 정렬이 가능한 경우
+            // 중앙에 있는 경우
             else {
-                tooltipPosition = skillRect.left + (skillRect.width / 2) - (tooltipWidth / 2);
+                leftPosition = skillLeftFromContainer - (tooltipWidth / 2) + (skillRect.width / 2);
             }
 
-            // ::before 가상 요소의 위치를 CSS 변수로 설정
-            $this.css('--tooltip-left', `${tooltipPosition}px`);
+            // 위치 설정
+            $this.css('--tooltip-left', `${leftPosition}px`);
             $this.addClass('active');
             activeSkill = this;
         });
