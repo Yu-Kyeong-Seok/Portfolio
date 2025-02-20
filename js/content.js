@@ -1,3 +1,50 @@
+function initializeSkillTooltips() {
+    const isMobile = window.matchMedia('(max-width: 768px)').matches;
+    let activeSkill = null;
+
+    // PC 환경에서는 CSS hover로 처리되므로 모바일일 때만 처리
+    if (isMobile) {
+        const $skills = $('.skill');
+        
+        // 각 스킬에 클릭 이벤트 바인딩
+        $skills.on('click', function(e) {
+            e.stopPropagation();
+            
+            // 이미 활성화된 스킬이면 툴팁 닫기
+            if ($(this).hasClass('active')) {
+                $(this).removeClass('active');
+                activeSkill = null;
+                return;
+            }
+
+            // 다른 활성화된 스킬이 있다면 비활성화
+            if (activeSkill) {
+                $(activeSkill).removeClass('active');
+            }
+
+            // 현재 스킬 활성화
+            $(this).addClass('active');
+            activeSkill = this;
+        });
+
+        // 문서 클릭 시 툴팁 닫기
+        $(document).on('click', function() {
+            if (activeSkill) {
+                $(activeSkill).removeClass('active');
+                activeSkill = null;
+            }
+        });
+
+        // 스크롤 시 활성화된 툴팁 닫기
+        $(window).on('scroll', function() {
+            if (activeSkill) {
+                $(activeSkill).removeClass('active');
+                activeSkill = null;
+            }
+        });
+    }
+}
+
 $(document).ready(function() {
     function initializeProjects() {
         const projects = [
@@ -242,52 +289,8 @@ $(document).ready(function() {
         setTimeout(showContent, 3000);
     }
 
-    function initializeSkillTooltips() {
-        const isMobile = window.matchMedia('(max-width: 768px)').matches;
-        let activeSkill = null;
-    
-        // PC 환경에서는 CSS hover로 처리되므로 모바일일 때만 처리
-        if (isMobile) {
-            const $skills = $('.skill');
-            
-            // 각 스킬에 클릭 이벤트 바인딩
-            $skills.on('click', function(e) {
-                e.stopPropagation();
-                
-                // 이미 활성화된 스킬이면 툴팁 닫기
-                if ($(this).hasClass('active')) {
-                    $(this).removeClass('active');
-                    activeSkill = null;
-                    return;
-                }
-    
-                // 다른 활성화된 스킬이 있다면 비활성화
-                if (activeSkill) {
-                    $(activeSkill).removeClass('active');
-                }
-    
-                // 현재 스킬 활성화
-                $(this).addClass('active');
-                activeSkill = this;
-            });
-    
-            // 문서 클릭 시 툴팁 닫기
-            $(document).on('click', function() {
-                if (activeSkill) {
-                    $(activeSkill).removeClass('active');
-                    activeSkill = null;
-                }
-            });
-    
-            // 스크롤 시 활성화된 툴팁 닫기
-            $(window).on('scroll', function() {
-                if (activeSkill) {
-                    $(activeSkill).removeClass('active');
-                    activeSkill = null;
-                }
-            });
-        }
-    }
+    initializeProjects(); // 프로젝트 초기화
+    initializeSkillTooltips(); // 스킬 툴팁 초기화
 });
 
 // 리사이즈 이벤트 처리
@@ -295,9 +298,3 @@ $(window).on('resize', _.debounce(function() {
     $('.skill').removeClass('active');
     initializeSkillTooltips();
 }, 250));
-
-// 초기화 함수 호출
-$(document).ready(function() {
-    initializeProjects(); // 프로젝트 초기화
-    initializeSkillTooltips(); // 스킬 툴팁 초기화
-});
