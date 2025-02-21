@@ -147,7 +147,7 @@ $dark-bg: #080808;
                         text-align: center;
 
                         @media (max-width: 768px) {
-                            left: var(--tooltip-left, 50%);
+                            left: var(--tooltip-left);
                             transform: translateX(0) translateY(0);
                             position: absolute;
                         }
@@ -167,7 +167,7 @@ $dark-bg: #080808;
                         pointer-events: none;
 
                         @media (max-width: 768px) {
-                            transform: translateX(0) translateY(0);
+                            transform: translateX(-50%) translateY(0);
                             position: absolute;
                         }
                     }
@@ -184,11 +184,14 @@ $dark-bg: #080808;
                     }
 
                     &.active {
-                        &::before,
+                        &::before{
+                            opacity: 1;
+                            visibility: visible;
+                        }
                         &::after {
                             opacity: 1;
                             visibility: visible;
-                            transform: translateX(0) translateY(0);
+                            transform: translateX(-50%) translateY(0);
                         }
                     }
                 }
